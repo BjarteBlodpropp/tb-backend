@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const dotEnvExists = fs.existsSync('.env')
+/*const dotEnvExists = fs.existsSync('.env')
 if (dotEnvExists) {
     console.log('getEnv.js: .env exists, probably running on development environment')
 
@@ -14,7 +14,7 @@ if (dotEnvExists) {
     });
 
     process.exit()
-}
+}*/
 
 // On Google Cloud Platform authentication is handled for us
 const gcs = require('@google-cloud/storage')()
