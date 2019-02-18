@@ -17,7 +17,12 @@ if (dotEnvExists) {
 }*/
 
 // On Google Cloud Platform authentication is handled for us
-const gcs = require('@google-cloud/storage')
+const {Storage} = require('@google-cloud/storage');
+const projectId = 'tb-backend';
+
+const gcs = new Storage({
+    projectId: projectId
+});
 
 const bucketName = `tb-backend.appspot.com`
 console.log(`Downloading .env from bucket "${bucketName}"`)
