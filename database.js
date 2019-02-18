@@ -1,9 +1,10 @@
 const mysql = require('mysql');
 
+let connection;
 
 if(process.env.ENV && process.env.ENV == "dev") {
     console.log("creating db connection for development");
-    let connection = mysql.createConnection({
+    connection = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
         database: process.env.DB_DATABASE,
@@ -20,6 +21,7 @@ if(process.env.ENV && process.env.ENV == "dev") {
     if (process.env.INSTANCE_CONNECTION_NAME) {
         config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
     }
+    connection = mysql.createConnection(config);
 }
 
 connection.connect(function (err) {
