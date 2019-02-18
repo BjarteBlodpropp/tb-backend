@@ -22,6 +22,9 @@ let config = {
 if (process.env.INSTANCE_CONNECTION_NAME) {
     config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
 }
+
+console.log(config);
+
 let connection = mysql.createConnection(config);
 
 
