@@ -1,8 +1,9 @@
 const mysql = require('mysql');
 
-let connection;
+//let connection;
 
-if(process.env.ENV && process.env.ENV == "dev") {
+//local
+/*if(process.env.ENV && process.env.ENV == "dev") {
     console.log("creating db connection for development");
     connection = mysql.createConnection({
         host: process.env.DB_HOST,
@@ -10,19 +11,19 @@ if(process.env.ENV && process.env.ENV == "dev") {
         database: process.env.DB_DATABASE,
         password: process.env.DB_PASS
     });
-} else {
-    console.log("creating db connection for production");
-    let config = {
-        user: process.env.SQL_USER,
-        database: process.env.SQL_DATABASE,
-        password: process.env.SQL_PASSWORD,
-    }
-
-    if (process.env.INSTANCE_CONNECTION_NAME) {
-        config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
-    }
-    connection = mysql.createConnection(config);
+} */
+console.log("creating db connection for production");
+let config = {
+    user: process.env.SQL_USER,
+    database: process.env.SQL_DATABASE,
+    password: process.env.SQL_PASSWORD,
 }
+
+if (process.env.INSTANCE_CONNECTION_NAME) {
+    config.socketPath = `/cloudsql/${process.env.INSTANCE_CONNECTION_NAME}`;
+}
+let connection = mysql.createConnection(config);
+
 
 connection.connect(function (err) {
     if(err) {

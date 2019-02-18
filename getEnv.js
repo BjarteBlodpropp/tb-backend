@@ -3,6 +3,16 @@ const fs = require('fs')
 const dotEnvExists = fs.existsSync('.env')
 if (dotEnvExists) {
     console.log('getEnv.js: .env exists, probably running on development environment')
+
+    var content;
+    fs.readFile('.env', function read(err, data) {
+        if (err) {
+            throw err;
+        }
+        console.log("Env content:");
+        console.log(data);
+    });
+
     process.exit()
 }
 
