@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-
+require('dotenv').config();
 //let connection;
 
 //local
@@ -13,10 +13,11 @@ const mysql = require('mysql');
     });
 } */
 console.log("creating db connection for production");
+
 let config = {
-    user: process.env.SQL_USER,
-    database: process.env.SQL_DATABASE,
-    password: process.env.SQL_PASSWORD,
+    user: process.env.DB_USER,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASS,
 }
 
 if (process.env.INSTANCE_CONNECTION_NAME) {
